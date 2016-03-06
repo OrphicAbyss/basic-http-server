@@ -3,13 +3,11 @@
 var http = require("http"),
     https = require("https");
 
-const StaticFileServer = require("./lib/static");
-
 class BasicHTTPServer {
     constructor (options){
         this.port = options.port || "8080";
         this.server = null;
-        this.routes = {};
+        this.routes = [];
         this.defaultRoute = null;
     }
 
@@ -23,20 +21,22 @@ class BasicHTTPServer {
     }
 
     registerHandler (handler) {
-        if (handler.route in this.routes) {
-            throw new Error("Setup route already contain route: " + handler.route);
+        for (let i = 0; i < this.routes.length; i++) {
+            if (this.routes[i].testRoute(handler.route)) {
+                throw new Error("New route: " + handler.route + " already covered by route: " + this.routes[i].route);
+            }
         }
 
-        this.routes[handler.route] = handler;
+        this.routes.push(handler);
     }
 
     handleRequest (request, response) {
         const url = request.url;
 
         let handled = false;
-        for (let route in this.routes) {
-            if (url.startsWith(route)) {
-                this.routes[route].handleRequest(request, response);
+        for (let i = 0; i < this.routes.length; i++) {
+            if (this.routes[i].testRoute(url)) {
+                this.routes[i].handleRequest(request, response);
                 handled = true;
                 break;
             }
@@ -61,11 +61,20 @@ class BasicHTTPServer {
     }
 }
 
-module.exports = BasicHTTPServer;
+const BaseRoute = require("./lib/route"),
+    StaticFileServer = require("./lib/static");
 
-const fileHandler = new StaticFileServer("/", "./", "index.html");
-const httpServer = new BasicHTTPServer({port: 8080});
-httpServer.registerDefaultHandler(fileHandler);
-httpServer.start();
-console.log("HTTP Server has started on port: " + httpServer.port);
+module.exports = BasicHTTPServer;
+module.exports = BaseRoute;
+module.exports.StaticFileServer = StaticFileServer;
+
+// const fileHandlerTest = new StaticFileServer("/test", "./", "index.html");
+// const fileHandlerTest2 = new StaticFileServer("/test2", "./", "index.html");
+// const fileHandler = new StaticFileServer("/", "./", "index.html");
+// const httpServer = new BasicHTTPServer({port: 8080});
+// httpServer.registerHandler(fileHandlerTest2);
+// httpServer.registerHandler(fileHandlerTest);
+// httpServer.registerDefaultHandler(fileHandler);
+// httpServer.start();
+// console.log("HTTP Server has started on port: " + httpServer.port);
 //httpServer.stop();
