@@ -1,5 +1,5 @@
 {
-  "name": "basic-http-server",
+  "name": "http-server-basic",
   "description": "Basic HTTP server library for creating simple REST services or Web-apps which mimimal dependances.",
   "repository": {
     "type" : "git",
