@@ -65,7 +65,7 @@ const BaseRoute = require("./lib/route"),
     StaticFileServer = require("./lib/static");
 
 module.exports = BasicHTTPServer;
-module.exports = BaseRoute;
+module.exports.BaseRoute = BaseRoute;
 module.exports.StaticFileServer = StaticFileServer;
 
 // const fileHandlerTest = new StaticFileServer("/test", "./", "index.html");
