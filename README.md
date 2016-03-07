@@ -9,7 +9,5 @@ Basic HTTP server library for Node.js focused on creating simple REST services o
 
     const fileHandler = new StaticFileServer("/", "./", "index.html");
     const httpServer = new BasicHTTPServer({port: 8080});
-    httpServer.registerHandler(fileHandlerTest2);
-    httpServer.registerHandler(fileHandlerTest);
     httpServer.registerDefaultHandler(fileHandler);
     httpServer.start();
