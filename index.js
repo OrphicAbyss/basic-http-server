@@ -61,11 +61,13 @@ class BasicHTTPServer {
     }
 }
 
-const BaseRoute = require("./lib/route"),
+const Routes = require("./lib/route"),
     StaticFileServer = require("./lib/static");
 
 module.exports = BasicHTTPServer;
-module.exports.BaseRoute = BaseRoute;
+module.exports.BaseRoute = Routes.BaseRoute;
+module.exports.NullRoute = Routes.NullRoute;
+module.exports.JSONRoute = Routes.JSONRoute;
 module.exports.StaticFileServer = StaticFileServer;
 
 // const fileHandlerTest = new StaticFileServer("/test", "./", "index.html");
