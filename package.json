@@ -2,10 +2,10 @@
   "name": "http-server-basic",
   "description": "Basic HTTP server library for creating simple REST services or Web-apps which mimimal dependances.",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/DrLabman/basic-http-server.git"
+    "type": "git",
+    "url": "https://github.com/DrLabman/basic-http-server.git"
   },
   "author": "Chris Hallson",
   "license": "MIT",
-  "version": "0.0.4"
+  "version": "0.0.5"
 }
