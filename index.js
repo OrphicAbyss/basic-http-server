@@ -19,12 +19,12 @@ class BasicHTTPServer {
 
     start () {
         if (this.useHttp) {
-            this.serverHttp = http.createServer(this.httpOptions, this.handleRequest.bind(this));
+            this.serverHttp = http.createServer(this.handleRequest.bind(this));
             this.serverHttp.listen(this.port);
         }
         if (this.useHttps) {
             this.serverHttps = https.createServer(this.httpsOptions, this.handleRequest.bind(this));
-            this.serverHttps.listen(this.port);
+            this.serverHttps.listen(this.sslPort);
         }
     }
 
