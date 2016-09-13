@@ -1,6 +1,6 @@
 {
   "name": "http-server-basic",
-  "description": "Basic HTTP server library for creating simple REST services or Web-apps which mimimal dependances.",
+  "description": "Microservice base library for creating simple services with mimimal dependances.",
   "repository": {
     "type": "git",
     "url": "https://github.com/DrLabman/basic-http-server.git"
@@ -9,6 +9,6 @@
   "license": "MIT",
   "version": "0.0.9",
   "devDependencies": {
-
+    "mocha": "3.0.2"
   }
 }
