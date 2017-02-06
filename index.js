@@ -7,7 +7,7 @@ const StaticFileServer = require("./lib/static");
 module.exports = {
     MicroService: Server,
     RouteBase: Routes.BaseRoute,
-    RouteNull: Routes.BaseRoute,
-    RouteJSON: Routes.BaseRoute,
+    RouteNull: Routes.NullRoute,
+    RouteJSON: Routes.JSONRoute,
     StaticFileServer: StaticFileServer
 };

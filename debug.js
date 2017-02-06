@@ -5,7 +5,7 @@ const BasicHTTPServer = require("./index");
 // const fileHandlerTest = new StaticFileServer("/test", "./", "index.html");
 // const fileHandlerTest2 = new StaticFileServer("/test2", "./", "index.html");
 // const fileHandler = new StaticFileServer("/", "./", "index.html");
-const httpServer = new BasicHTTPServer({useHttp: true, useHttps: true});
+const httpServer = new BasicHTTPServer.MicroService({useHttp: true, useHttps: true});
 // httpServer.registerHandler(fileHandlerTest2);
 // httpServer.registerHandler(fileHandlerTest);
 // httpServer.registerDefaultHandler(fileHandler);
